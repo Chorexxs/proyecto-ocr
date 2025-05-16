@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template
+from ocr import OCRNeuralNetwork
 import numpy as np
 
 app = Flask(__name__)
