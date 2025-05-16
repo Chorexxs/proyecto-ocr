@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 ctx.fillStyle = "black";
-ctx.fillRect(0, 0, canvas.clientWidth, canvas.height);
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 let painting = false;
 
@@ -18,10 +18,36 @@ function draw(e) {
 }
 
 function clearCanvas() {
-    const imgData = ctx.getImageData(0, 0, 200, 200).data;
-    const resized = new Array(400).fill(0); // 20x20
-    // Código para reducir a 20x20 y pasar a escala de grises
-    return resized;
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function getImageData() {
+    // Obtiene los datos del canvas
+    const srcCanvas = document.createElement("canvas");
+    srcCanvas.width = 20;
+    srcCanvas.height = 20;
+    const srcCtx = srcCanvas.getContext("2d");
+
+    // Escala la imagen original a 20x20
+    srcCtx.drawImage(canvas, 0, 0, 20, 20);
+    const imgData = srcCtx.getImageData(0, 0, 20, 20);
+    const data = imgData.data;
+
+    // Convertir RGBA a blanco (1) o negro (0)
+    const result = [];
+    for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const avg = (r + g + b) / 3;
+
+        // Normalizar; blanco = 1, negro = 0
+        const normalized = avg > 128 ? 1 : 0;
+        result.push(normalized);
+    }
+
+    return result;
 }
 
 function predict() {
