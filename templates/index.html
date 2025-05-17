@@ -6,11 +6,24 @@
     <title>Proyecto OCR</title>
 </head>
 <body>
-    <h1>Dibuja un número del 1 al 9</h1>
-    <canvas id="canvas" width="200" height="200" style="border: 1px solid"></canvas>
-    <button onclick="predict()">Predecir</button>
-    <button onclick="clearCanvas()">Limpiar</button>
-    <p id="result"></p>
+    <div>
+        <h1>Dibuja un número del 1 al 9</h1>
+        <canvas id="canvas" width="200" height="200" style="border: 1px solid"></canvas>
+        <button onclick="predict()">Predecir</button>
+        <button onclick="clearCanvas()">Limpiar</button>
+        <p id="result"></p>
+    </div>
+
+    <!-- Entrenar el modelo y guardar los datos-->
+    <div>
+        <label for="digit">Etiqueta del número (0-9): </label>
+        <input type="number" id="digit" min="0" max="9" placeholder="Ej: 3">
+        <br><br>
+        <button onclick="saveSample(document.getElementById('digit').value)">Guardar ejemplo</button>
+        <button onclick="trainModel()">Entrenar Modelo</button>
+        <button onclick="saveModel()">Guardar Modelo</button>
+        <button onclick="loadModel()">Cargar Modelo</button> 
+    </div>
 
     <script src="/static/ocr.js"></script>
 </body>

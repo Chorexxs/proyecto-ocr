@@ -62,3 +62,33 @@ function predict() {
         document.getElementById("result").textContent ="Predicción: " + result.prediction;
     });
 }
+
+// Guardar y entrenar datos
+
+function saveSample(label) {
+    const data = getImageData();
+    fetch("/save-sample", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({input: data, label: label})
+    }).then(res => res.json())
+      .then(res => alert("Guardado. Total de muestras: " + res.samples));
+}
+
+function trainModel() {
+    fetch("/train", {method: "POST"})
+        .then(res => res.json())
+        .then(res => alert(res.status));
+}
+
+function saveModel() {
+    fetch("/save-model", {method: "POST"})
+        .then(res => res.json())
+        .then(res => alert(res.status));
+}
+
+function loadModel() {
+    fetch("/load-model", {method: "POST"})
+        .then(res => res.json())
+        .then(res => alert(res.status));
+}
