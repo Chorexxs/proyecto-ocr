@@ -1,14 +1,19 @@
+// Selecciona el canvas del DOM y obtiene su contexto 2D
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+// Rellena el canvas completamente de negro al inicio
 ctx.fillStyle = "black";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+// Variable para saber si el usuario está dibujando
 let painting = false;
 
-canvas.addEventListener("mousedown", () => painting = true);
-canvas.addEventListener("mouseup", () => painting = false);
-canvas.addEventListener("mousemove", draw);
+// Eventos de ratón para empezar y detener el dibujo
+canvas.addEventListener("mousedown", () => painting = true); // Empieza a dibujar
+canvas.addEventListener("mouseup", () => painting = false); // Detiene el dibujo
+canvas.addEventListener("mousemove", draw); // Detecta movimiento del mouse
 
+// Función para dibujar círculos blancos donde se mueve el ratón
 function draw(e) {
     if (!painting) return;
     ctx.fillStyle = "white";
@@ -17,11 +22,13 @@ function draw(e) {
     ctx.fill();
 }
 
+// Limpia completamente el canvas y lo deja negro
 function clearCanvas() {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+// Extrae y procesa los datos del canvas para enviarlos al servidor
 function getImageData() {
     // Obtiene los datos del canvas
     const srcCanvas = document.createElement("canvas");
@@ -50,15 +57,17 @@ function getImageData() {
     return result;
 }
 
+// Envía los datos al servidor y muestra el resultado en pantalla
 function predict() {
     const data = getImageData();
     fetch("/predict", {
         method: "POST",
         headers: {"Content-type": "application/json"},
-        body: JSON.stringify({input: data})
+        body: JSON.stringify({input: data}) // Envia la imagen procesada
     })
     .then(res => res.json())
     .then(result => {
+        // Muestra la predicción en el elemento con id="result"
         document.getElementById("result").textContent ="Predicción: " + result.prediction;
     });
 }

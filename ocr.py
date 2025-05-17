@@ -1,10 +1,13 @@
 import numpy as np
 import random
-import pickle
+
+# Función de activación sigmoide
 
 
 def sigmoid(z):
     return 1.0 / (1.0 + np.exp(-z))
+
+# Derivada de la función sigmoide (para retropropagación)
 
 
 def sigmoid_prime(z):
@@ -12,6 +15,7 @@ def sigmoid_prime(z):
 
 
 class OCRNeuralNetwork:
+    # Inicializa la red neuronal
     def __init__(self, sizes):
         self.num_layers = len(sizes)
         self.sizes = sizes
@@ -20,18 +24,21 @@ class OCRNeuralNetwork:
         self.weights = [np.random.randn(y, x)
                         for x, y in zip(sizes[:-1], sizes[1:])]
 
+    # Ejecuta una pasada hacia adelante para obtener la predicción
     def predict(self, a):
         """Propagación hacia adelante para predicción"""
         for b, w in zip(self.biases, self.weights):
             a = sigmoid(np.dot(w, a) + b)
         return np.argmax(a)
 
+    # Entrena la red usando descenso de gradiente estocástico.
     def train(self, training_data, epochs, learning_rate):
-        for epoch in range(epochs):
+        for _ in range(epochs):
             random.shuffle(training_data)
             for x, y in training_data:
                 self.update(x, y, learning_rate)
 
+    # Realiza una actualización de pesos y sesgos para un solo ejemplo usando retropropagación.
     def update(self, x, y, learning_rate):
         # Inicialización de gradientes
         nabla_b = [np.zeros(b.shape) for b in self.biases]
@@ -53,7 +60,7 @@ class OCRNeuralNetwork:
         nabla_w[-1] = np.dot(delta, activations[-2].T)
 
         for l in range(2, self.num_layers):
-            z = zs[-1]
+            z = zs[-l]
             sp = sigmoid_prime(z)
             delta = np.dot(self.weights[-1 + 1].T, delta) * sp
             nabla_b[-1] = delta
