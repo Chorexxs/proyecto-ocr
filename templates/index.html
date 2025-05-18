@@ -22,6 +22,12 @@
         <p id="result"></p>
     </div>
 
+    <!-- Conenedor de entrenamiento del modelo -->
+    <div>
+        <input type="number" id="label" placeholder="Escribe el número debujado" min="0" max="9">
+        <button onclick="train()">Entrenar con este dibujo</button>
+    </div>
+
     <!-- Enlace al archivo JavaScript que contiene la lógica del canvas y la predicción -->
     <script src="/static/ocr.js"></script>
 </body>

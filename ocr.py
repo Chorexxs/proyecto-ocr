@@ -62,9 +62,9 @@ class OCRNeuralNetwork:
         for l in range(2, self.num_layers):
             z = zs[-l]
             sp = sigmoid_prime(z)
-            delta = np.dot(self.weights[-1 + 1].T, delta) * sp
-            nabla_b[-1] = delta
-            nabla_w[-1] = np.dot(delta, activations[-l - 1].T)
+            delta = np.dot(self.weights[-l + 1].T, delta) * sp
+            nabla_b[-l] = delta
+            nabla_w[-l] = np.dot(delta, activations[-l - 1].T)
 
         # Actualizar pesos y sesgos
         self.weights = [w - learning_rate * nw

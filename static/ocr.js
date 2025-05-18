@@ -72,3 +72,23 @@ function predict() {
     });
 }
 
+// Función de entrenamiento del modelo
+function train() {
+    const data = getImageData();
+    const label = parseInt(document.getElementById("label").value);
+    if (isNaN(label) || label < 0 || label > 9) {
+        alert("Ingresa un número del 1 al 9");
+        return;
+    }
+
+    fetch("/train", {
+        method: "POST",
+        headers: {"Content-type": "application/json"},
+        body: JSON.stringify({input: data, label: label})
+    })
+    .then(res => res.json())
+    .then(result => {
+        alert("Modelo entrenado con el número " + label);
+    });
+}
+
