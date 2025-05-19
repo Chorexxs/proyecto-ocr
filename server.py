@@ -7,6 +7,15 @@ import os
 app = Flask(__name__)
 ocr = OCRNeuralNetwork([400, 100, 10])  # Entrada, oculto, salida
 
+# Ruta absoluta para pesos.pkl
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+weights_path = os.path.join(BASE_DIR, "pesos.pkl")
+
+# Carga los pesos si existen
+if os.path.exists(weights_path):
+    ocr.load(weights_path)
+    print("Pesos cargados correctamente.")
+
 # Ruta principal que renderiza la interfaz HTML
 
 
@@ -40,19 +49,14 @@ def train_model():
 
     # Entrena el modelo con el nuevo dato
     ocr.train([(input_vector, y)], epochs=5, learning_rate=0.5)
+    ocr.save(weights_path)
     return jsonify({"status": "entrenado"})
 
 
-# Carga los datos
-# if os.path.exists("pesos.pkl"):
-#    ocr.load("pesos.pkl")
-#    print("Pesos cargados correctamente.")
-
-
-# @app.route("/save", methods=["POST"])
-# def save_model():
-#    ocr.save("pesos.pkl")
-#    return jsonify({"status": "guardado"})
+@app.route("/save", methods=["POST"])
+def save_model():
+    ocr.save(weights_path)
+    return jsonify({"status": "guardado"})
 
 
 if __name__ == "__main__":

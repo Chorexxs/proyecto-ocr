@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import pickle
 
 # Función de activación sigmoide
 
@@ -71,3 +72,12 @@ class OCRNeuralNetwork:
                         for w, nw in zip(self.weights, nabla_w)]
         self.biases = [b - learning_rate * nb
                        for b, nb in zip(self.biases, nabla_b)]
+
+    # Funciones para guardar y cargar pesos
+    def save(self, filename):
+        with open(filename, "wb") as f:
+            pickle.dump((self.weights, self.biases), f)
+
+    def load(self, filename):
+        with open(filename, "rb") as f:
+            self.weights, self.biases = pickle.load(f)
