@@ -68,4 +68,5 @@ Este proyecto es ideal como introducción al aprendizaje automático desde cero 
 ## Autor
 
 Desarrollado con ❤️ por [Chorexxs](https://chorexxs-portfolio.dev/)
+
 Puedes usar, modificar y compartir este proyecto con fines educativos.
