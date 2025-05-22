@@ -14,20 +14,24 @@
     <div >
         <!-- Encabezado -->
         <h1 class="encabezado">Dibuja un número del 1 al 9</h1>
-        <!-- Área de dibujo. Un canvas de 200x200 píxeles con borde visible -->
-        <canvas id="canvas" width="200" height="200"></canvas>
-        <!-- Botón que llama a la función predict() al hacer clic -->
-        <button class="boton1" onclick="predict()">Predecir</button>
-        <!-- Botón que llama a la función clearCanvas() para limpiar el canvas -->
-        <button class="boton2" onclick="clearCanvas()">Limpiar</button>
-        <!-- Párrafo donde se mostrará el resultado de la predicción -->
-        <p id="result"></p>
+        <div class="contenedor-canvas">
+            <!-- Área de dibujo. Un canvas de 200x200 píxeles con borde visible -->
+            <canvas id="canvas" width="200" height="200"></canvas>
+        </div>
+        <div class="botones">
+            <!-- Botón que llama a la función predict() al hacer clic -->
+            <button class="boton" onclick="predict()">Predecir</button>
+            <!-- Botón que llama a la función clearCanvas() para limpiar el canvas -->
+            <button class="boton" onclick="clearCanvas()">Limpiar</button>
+            <!-- Párrafo donde se mostrará el resultado de la predicción -->
+        </div>
+        <p class="texto" id="result"></p>
     </div>
 
     <!-- Conenedor de entrenamiento del modelo -->
-    <div class="text-white">
-        <input type="number" id="label" placeholder="Escribe el número debujado" min="0" max="9">
-        <button class="boton3" onclick="train()">Entrenar con este dibujo</button>
+    <div class="botones">
+        <input class="boton" type="number" id="label" placeholder="Número del 1 al 9">
+        <button class="boton" onclick="train()">Entrenar con este dibujo</button>
     </div>
 
     <!-- Enlace al archivo JavaScript que contiene la lógica del canvas y la predicción -->

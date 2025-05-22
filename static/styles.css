@@ -16,9 +16,10 @@ body {
 
 /* Estilo del canvas */
 
-canvas {
+.contenedor-canvas {
     background: #000;
     border: 1px solid #fff;
+    border-radius: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +27,7 @@ canvas {
 
 /* Estilo de los botones */
 
-.boton1 {
+.boton {
     background: #111;
     padding: 0.5rem 1rem; 
     border-radius: 0.75rem; 
@@ -34,39 +35,32 @@ canvas {
     background: transparent;
     color: white;
     transition: border-color 0.3s ease;
+    align-items: center;
+    justify-content: center;
     
 }
 
-.boton1:hover {
+.boton:hover {
     border-color: rgba(255, 255, 255, 0.8); 
 }
 
-.boton2 {
-    background: #111;
-    padding: 0.5rem 1rem; 
-    border-radius: 0.75rem; 
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: transparent;
-    color: white;
-    transition: border-color 0.3s ease;
-    
+.boton:active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
-.boton2:hover {
-    border-color: rgba(255, 255, 255, 0.8);/
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.boton3 {
-    background: #111;
-    padding: 0.5rem 1rem; 
-    border-radius: 0.75rem; 
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    background: transparent;
-    color: white;
-    transition: border-color 0.3s ease;
-    
-}
+/* Estilo del texto */
 
-.boton3:hover {
-    border-color: rgba(255, 255, 255, 0.8);/
+.texto {
+    color: #fff;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 1rem;
 }
