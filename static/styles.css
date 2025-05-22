@@ -1,0 +1,72 @@
+/* Color del fondo de la web */
+
+body {
+    background: #111;
+}
+
+/* Estilo del encabezado */
+
+.encabezado {
+    color: #fff;
+    display: flex;
+    margin-top: 6rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo del canvas */
+
+canvas {
+    background: #000;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo de los botones */
+
+.boton1 {
+    background: #111;
+    padding: 0.5rem 1rem; 
+    border-radius: 0.75rem; 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: white;
+    transition: border-color 0.3s ease;
+    
+}
+
+.boton1:hover {
+    border-color: rgba(255, 255, 255, 0.8); 
+}
+
+.boton2 {
+    background: #111;
+    padding: 0.5rem 1rem; 
+    border-radius: 0.75rem; 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: white;
+    transition: border-color 0.3s ease;
+    
+}
+
+.boton2:hover {
+    border-color: rgba(255, 255, 255, 0.8);/
+}
+
+.boton3 {
+    background: #111;
+    padding: 0.5rem 1rem; 
+    border-radius: 0.75rem; 
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: white;
+    transition: border-color 0.3s ease;
+    
+}
+
+.boton3:hover {
+    border-color: rgba(255, 255, 255, 0.8);/
+}
