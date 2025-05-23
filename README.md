@@ -1,5 +1,7 @@
 # 🧠 Proyecto OCR con Flask
 
+[portada.png]
+
 Este es un proyecto de reconocimiento óptico de caracteres (OCR) que permite al usuario dibujar un número del 0 al 9 en un lienzo, y una red neuronal entrenada en Python (usando solo NumPy) se encarga de predecir qué número es. La aplicación utiliza Flask como backend y HTML/JavaScript para el frontend.
 
 ---
