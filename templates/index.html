@@ -10,31 +10,39 @@
     <title>Proyecto OCR</title>
 </head>
 <body>
-    <!-- Contenedor principal de la interfaz -->
-    <div >
-        <!-- Encabezado -->
-        <h1 class="encabezado">Dibuja un número del 1 al 9</h1>
-        <div class="contenedor-canvas">
-            <!-- Área de dibujo. Un canvas de 200x200 píxeles con borde visible -->
-            <canvas id="canvas" width="200" height="200"></canvas>
-        </div>
-        <div class="botones">
-            <!-- Botón que llama a la función predict() al hacer clic -->
-            <button class="boton" onclick="predict()">Predecir</button>
-            <!-- Botón que llama a la función clearCanvas() para limpiar el canvas -->
-            <button class="boton" onclick="clearCanvas()">Limpiar</button>
-            <!-- Párrafo donde se mostrará el resultado de la predicción -->
-        </div>
-        <p class="texto" id="result"></p>
-    </div>
+  <!-- Contenedor principal centrado en la pantalla que agrupa todo el contenido -->
+  <div class="contenedor-central">
 
-    <!-- Conenedor de entrenamiento del modelo -->
+    <!-- Título principal que indica la acción que debe hacer el usuario -->
+    <h1 class="encabezado">Dibuja un número del 1 al 9</h1>
+
+    <!-- Área de dibujo: un canvas de 200x200 píxeles donde el usuario dibuja el número -->
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <!-- Grupo de botones para predecir o limpiar el canvas -->
     <div class="botones">
-        <input class="boton" type="number" id="label" placeholder="Número del 1 al 9">
-        <button class="boton" onclick="train()">Entrenar con este dibujo</button>
+      <!-- Botón que ejecuta la función predict() al hacer clic para predecir el número dibujado -->
+      <button class="boton" onclick="predict()">Predecir</button>
+      <!-- Botón que ejecuta la función clearCanvas() al hacer clic para limpiar el canvas -->
+      <button class="boton" onclick="clearCanvas()">Limpiar</button>
     </div>
 
-    <!-- Enlace al archivo JavaScript que contiene la lógica del canvas y la predicción -->
-    <script src="/static/ocr.js"></script>
+    <!-- Párrafo que muestra el resultado de la predicción -->
+    <p class="texto" id="result">Predicción:</p>
+
+    <!-- Grupo de elementos para entrenar el modelo con nuevos dibujos -->
+    <div class="botones">
+      <!-- Campo de entrada numérica para indicar qué número fue dibujado (etiqueta o label) -->
+      <input class="boton" type="number" id="label" placeholder="Escribe el número dibujado" min="0" max="9">
+      <!-- Botón que ejecuta la función train() para entrenar el modelo con el dibujo actual -->
+      <button class="boton" onclick="train()">Entrenar con este dibujo</button>
+    </div>
+
+  </div>
+
+  <!-- Enlace al archivo JavaScript donde se encuentra la lógica de dibujo, predicción y entrenamiento -->
+  <script src="/static/ocr.js"></script>
 </body>
+
+
 </html>
